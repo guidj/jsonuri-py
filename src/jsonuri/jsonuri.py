@@ -203,7 +203,7 @@ def deserialize(string):
 
     import urllib.parse
 
-    #URL: http://domain/resource?name=John&age=31 or http://domain/resource?name%3DJohn%26age%3D31
+    * URL: domain.com/resource?name=John&age=31 or domain.com/resource?name%3DJohn%26age%3D31
 
     >>> string = "name=John&age=31" # or "name%3DJohn%26age%3D31"
     >>> deserialize(string)
