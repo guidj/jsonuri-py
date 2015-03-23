@@ -20,7 +20,7 @@ An example of a practical application would be to send JSON data over HTTP GET, 
 >>> from jsonuri import jsonuri
 >>> jsonuri.serialize(json.loads('{"age": "31", "name": "John"}'))
 'age%3D31%26name%3DJohn'
->>> serialize(json.loads('{"age": "31", "name": "John"}'), encode=False)
+>>> jsonuri.serialize(json.loads('{"age": "31", "name": "John"}'), encode=False)
 'age=31&name=John'
 ```
 
