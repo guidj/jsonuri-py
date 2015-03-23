@@ -51,23 +51,7 @@
           <div class="body" role="main">
             
   <h1>Source code for jsonuri.jsonuri</h1><div class="highlight"><pre>
-<span class="c">#!/usr/bin/env python</span>
-<span class="c"># -*- encoding: utf-8 -*-</span>
-
-<span class="c"># Copyright 2015, Guilherme Dinis J</span>
-<span class="c">#</span>
-<span class="c"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
-<span class="c"># you may not use this file except in compliance with the License.</span>
-<span class="c"># You may obtain a copy of the License at</span>
-<span class="c">#</span>
-<span class="c">#     http://www.apache.org/licenses/LICENSE-2.0</span>
-<span class="c">#</span>
-<span class="c"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
-<span class="c"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<span class="c"># See the License for the specific language governing permissions and</span>
-<span class="c"># limitations under the License.</span>
-
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;guilherme&#39;</span>
 
 <span class="kn">import</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">urllib.parse</span>
@@ -100,8 +84,7 @@
 <span class="sd">    :return Dictionary with `key` and `value` pair</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">values</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">pair</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -163,7 +146,7 @@
 <span class="sd">    &gt;&gt;&gt; import urllib.parse</span>
 <span class="sd">    &gt;&gt;&gt; serialize(json.loads(&#39;{&quot;age&quot;: &quot;31&quot;, &quot;name&quot;: &quot;John&quot;}&#39;))</span>
 <span class="sd">    &#39;age%3D31%26name%3DJohn&#39;</span>
-<span class="sd">    &gt;&gt;&gt; serialize(json.loads(&#39;{&quot;age&quot;: &quot;31&quot;, &quot;name&quot;: &quot;John&quot;}&#39;), encode=False)</span>
+<span class="sd">    &gt;&gt;&gt; serialize(json.loads(&#39;{&quot;age&quot;: &quot;31&quot;, &quot;name&quot;: &quot;John&quot;}&#39;), False)</span>
 <span class="sd">    &#39;age=31&amp;name=John&#39;</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -233,15 +216,15 @@
 
     <span class="k">if</span> <span class="n">call</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 
-        <span class="c">#data = urllib.parse.quote_plus(data)</span>
         <span class="n">strings</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">unquote_plus</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;&amp;&quot;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">strings</span><span class="p">)):</span>
             <span class="n">strings</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">unquote_plus</span><span class="p">(</span><span class="n">strings</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">strings</span><span class="p">)):</span>
             <span class="n">__deserialize</span><span class="p">(</span><span class="n">strings</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">object</span><span class="p">,</span> <span class="n">call</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
-
         <span class="n">pair</span> <span class="o">=</span> <span class="n">_decode_uri_param</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 
         <span class="n">__map_object_key</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="s">&quot;key&quot;</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="s">&quot;value&quot;</span><span class="p">],</span> <span class="nb">object</span><span class="p">)</span>
@@ -256,7 +239,7 @@
 
 <span class="sd">    import urllib.parse</span>
 
-<span class="sd">    * URL: domain.com/resource?name=John&amp;age=31 or domain.com/resource?name%3DJohn%26age%3D31</span>
+<span class="sd">    #URL: http://domain/resource?name=John&amp;age=31 or http://domain/resource?name%3DJohn%26age%3D31</span>
 
 <span class="sd">    &gt;&gt;&gt; string = &quot;name=John&amp;age=31&quot; # or &quot;name%3DJohn%26age%3D31&quot;</span>
 <span class="sd">    &gt;&gt;&gt; deserialize(string)</span>

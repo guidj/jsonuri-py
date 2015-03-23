@@ -70,9 +70,7 @@
 </tbody>
 </table>
 <p>import urllib.parse</p>
-<ul class="simple">
-<li>URL: domain.com/resource?name=John&amp;age=31 or domain.com/resource?name%3DJohn%26age%3D31</li>
-</ul>
+<p>#URL: <a class="reference external" href="http://domain/resource?name=John&amp;age=31">http://domain/resource?name=John&amp;age=31</a> or <a class="reference external" href="http://domain/resource?name%3DJohn%26age%3D31">http://domain/resource?name%3DJohn%26age%3D31</a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s">&quot;name=John&amp;age=31&quot;</span> <span class="c"># or &quot;name%3DJohn%26age%3D31&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">deserialize</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 <span class="go">{&#39;age&#39;: &#39;31&#39;, &#39;name&#39;: &#39;John&#39;}</span>
@@ -103,7 +101,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib.parse</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">serialize</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s">&#39;{&quot;age&quot;: &quot;31&quot;, &quot;name&quot;: &quot;John&quot;}&#39;</span><span class="p">))</span>
 <span class="go">&#39;age%3D31%26name%3DJohn&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">serialize</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s">&#39;{&quot;age&quot;: &quot;31&quot;, &quot;name&quot;: &quot;John&quot;}&#39;</span><span class="p">),</span> <span class="n">encode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">serialize</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s">&#39;{&quot;age&quot;: &quot;31&quot;, &quot;name&quot;: &quot;John&quot;}&#39;</span><span class="p">),</span> <span class="bp">False</span><span class="p">)</span>
 <span class="go">&#39;age=31&amp;name=John&#39;</span>
 </pre></div>
 </div>
