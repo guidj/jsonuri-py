@@ -17,10 +17,13 @@
 
 
 import os
+import sys
 from setuptools import setup
 
-from jsonuri import __author__, __email__, __license__, __package__, __version__
+src_path = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'src')
+sys.path.append(src_path)
 
+from jsonuri import __author__, __email__, __license__, __package__, __version__
 
 CLASSIFIERS = [
     'Programming Language :: Python :: 3.4',
@@ -76,3 +79,5 @@ setup(
     install_requires=requirements(),
     classifiers=CLASSIFIERS
 )
+
+
