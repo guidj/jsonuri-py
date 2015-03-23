@@ -69,7 +69,7 @@ setup(
     author_email=__email__,
     license=__license__,
     url="https://bitbucket.org/guidj/jsonuri-py",
-    download_url="https://bitbucket.org/guidj/jsonuri-py/get/v0.1.0.tar.gz",
+    download_url="https://bitbucket.org/guidj/jsonuri-py/get/v{0}.tar.gz".format(__version__),
     package_dir={'jsonuri': 'src/jsonuri'},
     packages=packages,
     include_package_data=True,
