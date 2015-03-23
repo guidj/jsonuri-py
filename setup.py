@@ -25,9 +25,9 @@ from jsonuri import __author__, __email__, __license__, __package__, __version__
 CLASSIFIERS = [
     'Programming Language :: Python :: 3.4',
     'Intended Audience :: Developers',
-    'License :: OSI Approved :: Apache License 2.0',
+    'License :: OSI Approved :: Apache Software License',
     'Operating System :: OS Independent',
-    'Topic :: Software Development',
+    'Topic :: Software Development'
 ]
 
 packages = []
