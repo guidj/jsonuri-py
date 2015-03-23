@@ -62,7 +62,7 @@ for dirpath, dirnames, filenames in os.walk('src/'):
 
 setup(
     name=__package__,
-    description="Package to serialize python dictionaries/JSON into URI GET parameters",
+    description="Package to serialize python dictionaries/JSON into URI GET parameters, and reverse.",
     long_description=readme(),
     version=__version__,
     author=__author__,
