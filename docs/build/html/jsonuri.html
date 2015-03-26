@@ -57,15 +57,21 @@
 <span id="jsonuri-jsonuri-module"></span><h2>jsonuri.jsonuri module<a class="headerlink" href="#module-jsonuri.jsonuri" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="jsonuri.jsonuri.deserialize">
-<code class="descclassname">jsonuri.jsonuri.</code><code class="descname">deserialize</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/jsonuri/jsonuri.html#deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jsonuri.jsonuri.deserialize" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">jsonuri.jsonuri.</code><code class="descname">deserialize</code><span class="sig-paren">(</span><em>string</em>, <em>decode_twice=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/jsonuri/jsonuri.html#deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jsonuri.jsonuri.deserialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a URI parameters&#8217; string into a python dictionary</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> &#8211; Serialized URI parameters string to deserialize</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>string</strong> &#8211; Serialized URI parameters string to deserialize</li>
+<li><strong>decode_twice</strong> &#8211; Whether string should be decoded twice. Should be true is data was produced by this package
+and sent over the web.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Python dictionary with parsed parameters</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Python dictionary with parsed parameters</p>
+</td>
 </tr>
 </tbody>
 </table>

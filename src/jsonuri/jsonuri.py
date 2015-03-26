@@ -152,7 +152,7 @@ def __map_object_key(key, value, object):
         object[key] = value
 
 
-def __deserialize(string, object, call):
+def __deserialize(string, decode_twice, object, call):
     """Converts a URI parameters' string into a python dictionary
 
     :param string: Serialized URI parameters string to deserialize
@@ -163,13 +163,18 @@ def __deserialize(string, object, call):
 
     if call == 0:
 
-        strings = urllib.parse.unquote_plus(string).split("&")
+        if decode_twice:
+            tmp = urllib.parse.unquote(string)
+        else:
+            tmp = string
+
+        strings = urllib.parse.unquote_plus(tmp).split("&")
 
         for i in range(0, len(strings)):
             strings[i] = urllib.parse.unquote_plus(strings[i])
 
         for i in range(0, len(strings)):
-            __deserialize(strings[i], object, call + 1)
+            __deserialize(strings[i], decode_twice, object, call + 1)
 
     else:
         pair = _decode_uri_param(string)
@@ -177,11 +182,13 @@ def __deserialize(string, object, call):
         __map_object_key(pair["key"], pair["value"], object)
 
 
-def deserialize(string):
+def deserialize(string, decode_twice=True):
 
     """Converts a URI parameters' string into a python dictionary
 
     :param string: Serialized URI parameters string to deserialize
+    :param decode_twice: Whether string should be decoded twice. Should be true is data was produced by this package
+           and sent over the web.
     :return: Python dictionary with parsed parameters
 
     import urllib.parse
@@ -196,6 +203,6 @@ def deserialize(string):
 
     parsed_data = dict()
 
-    __deserialize(string, parsed_data, 0)
+    __deserialize(string, decode_twice, parsed_data, 0)
 
     return parsed_data
