@@ -110,46 +110,48 @@ def __map_object_key(key, value, object):
     :param object: Python dictionary to store mapped value of key
     """
 
-    index_of_object_sep = key.find(":")
-    index_of_array = key.find("[")
+    if key and value:
 
-    # `:` comes first
-    if (index_of_object_sep != -1) and (index_of_object_sep < index_of_array or index_of_array == -1):
+        index_of_object_sep = key.find(":")
+        index_of_array = key.find("[")
 
-        extracted_key = key[0:index_of_object_sep]
-        remaining_key = key[index_of_object_sep + 1:]
+        # `:` comes first
+        if (index_of_object_sep != -1) and (index_of_object_sep < index_of_array or index_of_array == -1):
 
-        if extracted_key not in object:
-            object[extracted_key] = dict()
+            extracted_key = key[0:index_of_object_sep]
+            remaining_key = key[index_of_object_sep + 1:]
 
-        if not remaining_key:
-            object[extracted_key] = value
+            if extracted_key not in object:
+                object[extracted_key] = dict()
+
+            if not remaining_key:
+                object[extracted_key] = value
+            else:
+                __map_object_key(remaining_key, value, object[extracted_key])
+
+        # `[` comes first
+        elif (index_of_array != -1) and (index_of_array < index_of_object_sep or index_of_object_sep == -1):
+
+            extracted_key = key[0:index_of_array]
+            remaining_key = key[key.find("]") + 1:]
+
+            if extracted_key not in object:
+                object[extracted_key] = []
+
+            index = int(key[index_of_array + 1:key.find("]")])
+
+            # add list element
+            while index + 1 > len(object[extracted_key]):
+                object[extracted_key].append(dict())
+
+            if not remaining_key:
+                object[extracted_key][index] = value
+            else:
+                __map_object_key(remaining_key, value, object[extracted_key][index])
+
         else:
-            __map_object_key(remaining_key, value, object[extracted_key])
 
-    # `[` comes first
-    elif (index_of_array != -1) and (index_of_array < index_of_object_sep or index_of_object_sep == -1):
-
-        extracted_key = key[0:index_of_array]
-        remaining_key = key[key.find("]") + 1:]
-
-        if extracted_key not in object:
-            object[extracted_key] = []
-
-        index = int(key[index_of_array + 1:key.find("]")])
-
-        # add list element
-        while index + 1 > len(object[extracted_key]):
-            object[extracted_key].append(dict())
-
-        if not remaining_key:
-            object[extracted_key][index] = value
-        else:
-            __map_object_key(remaining_key, value, object[extracted_key][index])
-
-    else:
-
-        object[key] = urllib.parse.unquote_plus(value)
+            object[key] = urllib.parse.unquote_plus(value)
 
 
 def __deserialize(string, decode_twice, object, call):
