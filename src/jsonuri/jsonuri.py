@@ -113,7 +113,7 @@ def __map_object_key(key, value, object):
     index_of_object_sep = key.find(":")
     index_of_array = key.find("[")
 
-    #`:` comes first
+    # `:` comes first
     if (index_of_object_sep != -1) and (index_of_object_sep < index_of_array or index_of_array == -1):
 
         extracted_key = key[0:index_of_object_sep]
@@ -127,7 +127,7 @@ def __map_object_key(key, value, object):
         else:
             __map_object_key(remaining_key, value, object[extracted_key])
 
-    #`[` comes first
+    # `[` comes first
     elif (index_of_array != -1) and (index_of_array < index_of_object_sep or index_of_object_sep == -1):
 
         extracted_key = key[0:index_of_array]
@@ -138,7 +138,7 @@ def __map_object_key(key, value, object):
 
         index = int(key[index_of_array + 1:key.find("]")])
 
-        #add list element
+        # add list element
         while index + 1 > len(object[extracted_key]):
             object[extracted_key].append(dict())
 
@@ -177,7 +177,11 @@ def __deserialize(string, decode_twice, object, call):
             __deserialize(strings[i], decode_twice, object, call + 1)
 
     else:
-        pair = _decode_uri_param(string)
+
+        if string:
+            pair = _decode_uri_param(string)
+        else:
+            pair = dict(key=None, value=None)
 
         __map_object_key(pair["key"], pair["value"], object)
 
