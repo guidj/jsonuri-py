@@ -149,7 +149,7 @@ def __map_object_key(key, value, object):
 
     else:
 
-        object[key] = value
+        object[key] = urllib.parse.unquote_plus(value)
 
 
 def __deserialize(string, decode_twice, object, call):
