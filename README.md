@@ -12,7 +12,6 @@ Equivalent libs/packages:
 ==========================
 
 * JavaScript: [jsonuri-js](https://bitbucket.org/guidj/jsonuri-js)
-* PHP: [jsonuri-php](https://bitbucket.org/guidj/jsonuri-php)
 
 Examples:
 =============
