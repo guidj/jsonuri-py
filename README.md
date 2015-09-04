@@ -11,7 +11,7 @@ An example of a practical application would be to send JSON data over HTTP GET, 
 Equivalent libs/packages:
 ==========================
 
-* JavaScript: [jsonuri-js](https://bitbucket.org/guidj/jsonuri-js)
+* JavaScript: [jsonuri-js](https://github.com/guidj/jsonuri-js)
 
 Examples:
 =============
