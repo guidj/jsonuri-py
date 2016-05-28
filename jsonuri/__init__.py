@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-# Copyright 2015, Guilherme Dinis J
+# Copyright 2016, Guilherme Dinis J
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 
 
 __author__ = 'guilherme'
-__copyright__ = "2015, Guilherme Dinis J"
-__email__ = "guilherme@predictry.com"
+__copyright__ = "2016, Guilherme Dinis J"
+__email__ = "guilherme.dinisjunior@gmail.com"
 __license__ = "Apache License, Version 2.0"
 __package__ = "jsonuri"
-__version__ = "0.1.24"
+__version__ = "0.1.25"

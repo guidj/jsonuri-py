@@ -18,9 +18,10 @@
 
 import os
 import sys
+
 from setuptools import setup
 
-src_path = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'src')
+src_path = os.path.join(os.path.realpath(os.path.dirname(__file__)), '.')
 sys.path.append(src_path)
 
 from jsonuri import __author__, __email__, __license__, __package__, __version__
@@ -34,7 +35,7 @@ CLASSIFIERS = [
 ]
 
 packages = []
-root_dir = os.path.dirname("src")
+root_dir = os.path.dirname(".")
 
 
 def readme():
@@ -52,7 +53,7 @@ def requirements():
 
 if root_dir:
     os.chdir(root_dir)
-for dirpath, dirnames, filenames in os.walk('src/'):
+for dirpath, dirnames, filenames in os.walk('.'):
     # Ignore dirnames that start with '.'
     for i, dirname in enumerate(dirnames):
         if dirname.startswith('.'):
@@ -71,9 +72,9 @@ setup(
     author=__author__,
     author_email=__email__,
     license=__license__,
-    url="https://bitbucket.org/guidj/jsonuri-py",
+    url="https://github.com/guidj/jsonuri-py",
     download_url="https://bitbucket.org/guidj/jsonuri-py/get/v{0}.tar.gz".format(__version__),
-    package_dir={'jsonuri': 'src/jsonuri'},
+    package_dir={'jsonuri': 'jsonuri'},
     packages=packages,
     include_package_data=True,
     install_requires=requirements(),

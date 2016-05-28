@@ -26,19 +26,19 @@ Serialization:
 >>> import json
 >>> import urllib.parse
 >>> from jsonuri import jsonuri
->>> jsonuri.serialize(json.loads('{"age": "31", "name": "John"}'))
-'age%3D31%26name%3DJohn'
->>> jsonuri.serialize(json.loads('{"age": "31", "name": "John"}'), encode=False)
-'age=31&name=John'
+>>> jsonuri.serialize(json.loads('{"age": "31", "name": "John", "account": {"id": 127, "regions": ["US", "SG"]}}'))
+'account%3Aregions%5B0%5D%3DUS%26account%3Aregions%5B1%5D%3DSG%26account%3Aid%3D127&age%3D31&name%3DJohn'
+>>> jsonuri.serialize(json.loads('{"age": "31", "name": "John", "account": {"id": 127, "regions": ["US", "SG"]}}'), encode=False)
+'account:regions[0]=US&account:regions[1]=SG&account:id=127&age=31&name=John'
 ```
 
 Desirialization
 ----------------
 
 ```python
->>> string = "name=John&age=31" # or "name%3DJohn%26age%3D31"
+>>> string = "account:regions[0]=US&account:regions[1]=SG&account:id=127&age=31&name=John"
 >>> jsonuri.deserialize(string)
-{'age': '31', 'name': 'John'}
+{'account': {'regions': ['US', 'SG'], 'id': '127'}, 'age': '31', 'name': 'John'}
 ```
 
 Notes
