@@ -64,17 +64,17 @@
 <div class="highlight highlight-source-python"><pre><span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> <span class="pl-k">import</span> json
 <span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> <span class="pl-k">import</span> urllib.parse
 <span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> <span class="pl-k">from</span> jsonuri <span class="pl-k">import</span> jsonuri
-<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.serialize(json.loads(<span class="pl-s"><span class="pl-pds">'</span>{"age": "31", "name": "John"}<span class="pl-pds">'</span></span>))
-<span class="pl-s"><span class="pl-pds">'</span>age%3D31%26name%3DJohn<span class="pl-pds">'</span></span>
-<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.serialize(json.loads(<span class="pl-s"><span class="pl-pds">'</span>{"age": "31", "name": "John"}<span class="pl-pds">'</span></span>), <span class="pl-v">encode</span><span class="pl-k">=</span><span class="pl-c1">False</span>)
-<span class="pl-s"><span class="pl-pds">'</span>age=31&amp;name=John<span class="pl-pds">'</span></span></pre></div>
+<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.serialize(json.loads(<span class="pl-s"><span class="pl-pds">'</span>{"age": "31", "name": "John", "account": {"id": 127, "regions": ["US", "SG"]<span class="pl-c1">}}</span><span class="pl-pds">'</span></span>))
+<span class="pl-s"><span class="pl-pds">'</span>account%3Aregions%5B0%5D%3DUS%26account%3Aregions%5B1%5D%3DSG%26account%3Aid%3D127&amp;age%3D31&amp;name%3DJohn<span class="pl-pds">'</span></span>
+<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.serialize(json.loads(<span class="pl-s"><span class="pl-pds">'</span>{"age": "31", "name": "John", "account": {"id": 127, "regions": ["US", "SG"]<span class="pl-c1">}}</span><span class="pl-pds">'</span></span>), <span class="pl-v">encode</span><span class="pl-k">=</span><span class="pl-c1">False</span>)
+<span class="pl-s"><span class="pl-pds">'</span>account:regions[0]=US&amp;account:regions[1]=SG&amp;account:id=127&amp;age=31&amp;name=John<span class="pl-pds">'</span></span></pre></div>
 
 <h2>
 <a id="desirialization" class="anchor" href="#desirialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desirialization</h2>
 
-<div class="highlight highlight-source-python"><pre><span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> string <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>name=John&amp;age=31<span class="pl-pds">"</span></span> <span class="pl-c"># or "name%3DJohn%26age%3D31"</span>
+<div class="highlight highlight-source-python"><pre><span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> string <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>account:regions[0]=US&amp;account:regions[1]=SG&amp;account:id=127&amp;age=31&amp;name=John<span class="pl-pds">"</span></span>
 <span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.deserialize(string)
-{<span class="pl-s"><span class="pl-pds">'</span>age<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>31<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>}</pre></div>
+{<span class="pl-s"><span class="pl-pds">'</span>account<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>regions<span class="pl-pds">'</span></span>: [<span class="pl-s"><span class="pl-pds">'</span>US<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>SG<span class="pl-pds">'</span></span>], <span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>127<span class="pl-pds">'</span></span>}, <span class="pl-s"><span class="pl-pds">'</span>age<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>31<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>}</pre></div>
 
 <h1>
 <a id="notes" class="anchor" href="#notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes</h1>
