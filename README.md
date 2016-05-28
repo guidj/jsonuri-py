@@ -11,7 +11,10 @@ An example of a practical application would be to send JSON data over HTTP GET, 
 Equivalent libs/packages:
 ==========================
 
-* JavaScript: [jsonuri-js](https://github.com/guidj/jsonuri-js)
+| Language | Repo                                |
+|----------|-------------------------------------|
+| JavaScript   | https://github.com/guidj/jsonuri-js |
+
 
 Examples:
 =============
