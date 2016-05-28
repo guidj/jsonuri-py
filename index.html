@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Jsonuri-py by guidj</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Jsonuri-py</h1>
+        <p>Serialisation of complex JSON to URL GET parameters, and reverse</p>
+
+        <p class="view"><a href="https://github.com/guidj/jsonuri-py">View the Project on GitHub <small>guidj/jsonuri-py</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/guidj/jsonuri-py/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/guidj/jsonuri-py/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/guidj/jsonuri-py">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="jsonuri-py" class="anchor" href="#jsonuri-py" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSONURI-PY</h1>
+
+<p>This package helps you convert Python dictionaries into an HTTP GET request parameters, and vice-versa. </p>
+
+<p>An example of a practical application would be to send JSON data over HTTP GET, e.g. to a static resource small.png, and harvest the data from access logs instead of running real-time data collection.</p>
+
+<p><strong>Note</strong>: You should avoid send sensitive information using this mechanism, or at least ensure you send your data over SSL.</p>
+
+<h1>
+<a id="equivalent-libspackages" class="anchor" href="#equivalent-libspackages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Equivalent libs/packages:</h1>
+
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Repo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JavaScript</td>
+<td><a href="https://github.com/guidj/jsonuri-js">https://github.com/guidj/jsonuri-js</a></td>
+</tr>
+</tbody>
+</table>
+
+<h1>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h1>
+
+<h2>
+<a id="serialization" class="anchor" href="#serialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Serialization:</h2>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> <span class="pl-k">import</span> json
+<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> <span class="pl-k">import</span> urllib.parse
+<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> <span class="pl-k">from</span> jsonuri <span class="pl-k">import</span> jsonuri
+<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.serialize(json.loads(<span class="pl-s"><span class="pl-pds">'</span>{"age": "31", "name": "John"}<span class="pl-pds">'</span></span>))
+<span class="pl-s"><span class="pl-pds">'</span>age%3D31%26name%3DJohn<span class="pl-pds">'</span></span>
+<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.serialize(json.loads(<span class="pl-s"><span class="pl-pds">'</span>{"age": "31", "name": "John"}<span class="pl-pds">'</span></span>), <span class="pl-v">encode</span><span class="pl-k">=</span><span class="pl-c1">False</span>)
+<span class="pl-s"><span class="pl-pds">'</span>age=31&amp;name=John<span class="pl-pds">'</span></span></pre></div>
+
+<h2>
+<a id="desirialization" class="anchor" href="#desirialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desirialization</h2>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> string <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>name=John&amp;age=31<span class="pl-pds">"</span></span> <span class="pl-c"># or "name%3DJohn%26age%3D31"</span>
+<span class="pl-k">&gt;&gt;</span><span class="pl-k">&gt;</span> jsonuri.deserialize(string)
+{<span class="pl-s"><span class="pl-pds">'</span>age<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>31<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>}</pre></div>
+
+<h1>
+<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes</h1>
+
+<p>The package was not designed to process HTML form data, specifically multi-value variables, i.e. from select attributes. Though if you convert the data to a JSON/JavaScript object, that should work.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/guidj">guidj</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
