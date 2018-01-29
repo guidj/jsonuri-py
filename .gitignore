@@ -1,0 +1,7 @@
+dist
+build
+docs/build/html
+__pycache__
+
+*.idea
+*egg-info*

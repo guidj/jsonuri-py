@@ -17,8 +17,8 @@
 
 
 __author__ = 'guilherme'
-__copyright__ = "2016, Guilherme Dinis J"
+__copyright__ = "2015-2018, Guilherme Dinis J"
 __email__ = "guilherme.dinisjunior@gmail.com"
 __license__ = "Apache License, Version 2.0"
 __package__ = "jsonuri"
-__version__ = "0.1.25"
+__version__ = "0.2.2"
