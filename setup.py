@@ -20,14 +20,15 @@ import os
 import sys
 
 from setuptools import setup
+from jsonuri import __author__, __email__, __license__, __package__, __version__
+
 
 src_path = os.path.join(os.path.realpath(os.path.dirname(__file__)), '.')
 sys.path.append(src_path)
 
-from jsonuri import __author__, __email__, __license__, __package__, __version__
 
 CLASSIFIERS = [
-    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.6',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: Apache Software License',
     'Operating System :: OS Independent',
@@ -48,7 +49,7 @@ def requirements():
         with open('requirements.txt') as fp:
             return fp.readlines()
     else:
-        return list()
+        return []
 
 
 if root_dir:
@@ -66,14 +67,13 @@ for dirpath, dirnames, filenames in os.walk('.'):
 
 setup(
     name=__package__,
-    description="Package to serialize python dictionaries/JSON into URI GET parameters, and reverse.",
+    description="This package helps you convert Python dictionaries into an Gzip compressed, Base64 string for use as a HTTP GET request parameter and reverse it",
     long_description=readme(),
     version=__version__,
     author=__author__,
     author_email=__email__,
     license=__license__,
     url="https://github.com/guidj/jsonuri-py",
-    download_url="https://bitbucket.org/guidj/jsonuri-py/get/v{0}.tar.gz".format(__version__),
     package_dir={'jsonuri': 'jsonuri'},
     packages=packages,
     include_package_data=True,
